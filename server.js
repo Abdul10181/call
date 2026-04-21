@@ -43,10 +43,11 @@ app.get("/make-call", async (req, res) => {
     const response = await axios.post(
       `https://core1.primecall.com/ns-api/v2/domains/${domain}/users/${user}/calls`,
       {
-        synchronous: "yes",
+        synchronous: "no",
         "call-id": Date.now().toString(),
         originator: "105",
-        destination: "tel:+1" + cleanPhone
+        destination: cleanPhone,
+        bridge: true
       },
       {
         headers: {
